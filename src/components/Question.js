@@ -6,6 +6,7 @@ export default function Question(props){
     // TODO : lookup how to randomply generate the answers as right now the correct answer is on the first row of answers
     return (
     <form onSubmit={props.onFormSubmit}>
+        <h3>correct</h3>
         <h1>{props.data.question}</h1>
         {props.data.answers.map((answer, index) => (
             <div key={index} className={props.isChecked === answer ? 'clicked' : '' }>

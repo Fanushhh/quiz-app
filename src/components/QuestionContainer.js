@@ -34,7 +34,6 @@ export default function QuestionContainer() {
     event.preventDefault();
     if (option === data[questionIndex].correctAnswer) {
       setScore((score) => score + 1);
-      
     }
     if (questionIndex < data.length - 1) {
       setQuestionIndex((prev) => prev + 1);
