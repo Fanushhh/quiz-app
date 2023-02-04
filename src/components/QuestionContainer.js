@@ -9,10 +9,12 @@ export default function QuestionContainer() {
   const [score, setScore] = useState(0);
   const [option, setOption] = useState('');
   const [isWon, setIsWon] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(null);
+  const [isVisible, setIsVisible] = useState(null);
   const fetchData = async () => {
     try {
       const res = await fetch(
-        "https://the-trivia-api.com/api/questions?limit=10&region=RO&difficulty=hard"
+        "https://the-trivia-api.com/api/questions?limit=10&region=RO&difficulty=medium"
       );
       const receivedData = await res.json();
       const reconstructedData = receivedData.map(question => ({
@@ -30,15 +32,26 @@ export default function QuestionContainer() {
   useEffect(() => {
     fetchData();
   }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (option === data[questionIndex].correctAnswer) {
       setScore((score) => score + 1);
+      setIsCorrect(true);
+      setIsVisible(true);
+    }else{
+      setIsCorrect(false);
+      setIsVisible(true)
     }
     if (questionIndex < data.length - 1) {
-      setQuestionIndex((prev) => prev + 1);
-    } else {
-      setIsWon(!isWon);
+      setTimeout(() => {
+        setIsVisible(false);
+        setQuestionIndex((prev) => prev + 1);
+        
+      },500)} 
+    else {
+    setIsWon(!isWon);
+      
     }
     setOption('');
     
@@ -55,7 +68,7 @@ export default function QuestionContainer() {
     <main>
       {isWon ? (
         <div className="question-container">
-          <p>You {score > 5 ? "won" : "lost"} Your score was: {score}</p>
+          <p>You {score > 5 ? "won" : "lost"} Your score was: {score} out of 10.</p>
           <button onClick={restartQuiz}>Try again</button>
         </div>
       ) : (
@@ -66,6 +79,8 @@ export default function QuestionContainer() {
           ) : 
           (
             <Question
+              isVisible={isVisible}
+              isCorrect={isCorrect}
               isChecked={option}
               handleChange={handleChange}
               onFormSubmit={handleSubmit}

@@ -97,8 +97,25 @@ div button{
   box-shadow: 0 .5rem .9rem .1rem rgba(0, 0, 0, 0.432);
 }
 
-
-
+h2{
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+.green, .red{
+  visibility: visible;
+  opacity: 1;
+  font-size: 1rem;
+  padding: 0.3rem 5rem;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+.green{
+  background-color: rgb(71, 122, 71);
+}
+.red{
+  background-color: rgb(204, 92, 92);
+}
 form button:hover, div button:hover{
   background-color: #3c768f;
 }
