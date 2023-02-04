@@ -3,8 +3,7 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
 }
 *, ::after, ::before{
   margin:0;
@@ -23,7 +22,10 @@ main{
   background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  
   background: linear-gradient(to right, #2C5364, #203A43, #0F2027); 
 }
-
+button{
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+}
 .question-container{
   /* background-color:#2C5364; */
   border-radius: 5px;
@@ -60,16 +62,21 @@ form label{
 form div{
   width: 70%;
   padding: 1em;
-  border: 2px solid #203A43; 
+  border: 2px solid black; 
   cursor: pointer;
   border-radius: 5px;
+  transition: .2s ease-in;
+}
+
+form div:hover{
+  border: 2px solid lightblue; 
 }
 
 form button{
-  background-color:#203A43;
+  background-color:rgba(0, 139, 139, 0.459);
   border: 2px solid transparent;
   border-radius: 5px;
-  width: 50%;
+  max-width: 10rem;
   padding: 1rem;
   font-size: 1.3rem;
   margin-top: 1rem;
@@ -77,7 +84,19 @@ form button{
   cursor: pointer;
 }
 
-form button:hover{
-  border: 2px solid #0F2027;
+div button{
+  border: none;
   cursor: pointer;
+  background-color:rgba(0, 139, 139, 0.459);
+  color:white;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 .5rem .9rem .1rem rgba(0, 0, 0, 0.432);
+}
+
+
+
+form button:hover, div button:hover{
+  background-color: #3c768f;
 }
